@@ -1,6 +1,8 @@
 package univs.edu.usuario;
 
 import static com.sun.jmx.mbeanserver.DefaultMXBeanMappingFactory.propertyName;
+import java.util.ArrayList;
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.criterion.Restrictions;
@@ -41,6 +43,14 @@ public class UsuarioDAO {
         Usuario usuario = (Usuario) sessao.createCriteria(Usuario.class).add(Restrictions.eq("idUsuario", id)).uniqueResult();
         sessao.close();
         return usuario;
+    }
+    
+    public List<Usuario> ListarUsuarios(){
+        sessao = HibernateUtil.getSessionFactory().openSession();
+        transacao = sessao.beginTransaction();
+        List<Usuario> usuarios = sessao.createCriteria(Usuario.class).list();
+        sessao.close();
+        return usuarios;
     }
     
 }

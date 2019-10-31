@@ -5,17 +5,29 @@
  */
 package univs.edu.telas;
 
+import univs.edu.usuario.Usuario;
+import univs.edu.usuario.UsuarioDAO;
+import univs.edu.usuario.UsuarioTableModel;
+
 /**
  *
  * @author LABORATORIO 01
  */
 public class TelaPesquisaUsuario extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TelaPesquisaUsuario
-     */
+    Usuario usuario = new Usuario();
+    UsuarioDAO dao = new UsuarioDAO();
+    
+    
     public TelaPesquisaUsuario() {
         initComponents();
+        atualizarTabela();
+    }
+    
+    public void atualizarTabela(){
+        UsuarioTableModel tm = new UsuarioTableModel(dao.ListarUsuarios());
+        tabelaUsuario.setModel(tm);
+        
     }
 
     /**
@@ -32,7 +44,7 @@ public class TelaPesquisaUsuario extends javax.swing.JFrame {
         tfLogin = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabelaUsuario = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -58,7 +70,7 @@ public class TelaPesquisaUsuario extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -69,7 +81,7 @@ public class TelaPesquisaUsuario extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabelaUsuario);
 
         jButton2.setText("Excluir");
 
@@ -100,9 +112,10 @@ public class TelaPesquisaUsuario extends javax.swing.JFrame {
                                 .addComponent(jButton4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton2)
-                                .addGap(18, 18, 18)
-                                .addComponent(jButton3)))))
-                .addContainerGap(61, Short.MAX_VALUE))
+                                .addGap(40, 40, 40)
+                                .addComponent(jButton3)
+                                .addGap(10, 10, 10)))))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,6 +138,7 @@ public class TelaPesquisaUsuario extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tfLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLoginActionPerformed
@@ -178,7 +192,7 @@ public class TelaPesquisaUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabelaUsuario;
     private javax.swing.JTextField tfLogin;
     // End of variables declaration//GEN-END:variables
 }

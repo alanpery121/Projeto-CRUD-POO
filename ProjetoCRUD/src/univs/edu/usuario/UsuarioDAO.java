@@ -36,7 +36,7 @@ public class UsuarioDAO {
     public void editar(Usuario usuario){
         sessao = HibernateUtil.getSessionFactory().openSession();
         transacao = sessao.beginTransaction();
-        sessao.update(usuario);
+        sessao.update(usuario); 
         transacao.commit();
         sessao.close();
     }

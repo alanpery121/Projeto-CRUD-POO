@@ -56,7 +56,7 @@ public class Funcionario{
    /**
     * @param nomne the nomne to set
     */
-   public void setNome(String nomne) {
+   public void setNomeFuncionario(String nomne) {
        this.nomeFuncionario = nomne;
    }
 

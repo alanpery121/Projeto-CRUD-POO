@@ -111,10 +111,20 @@ public class TelaFuncionario extends javax.swing.JFrame {
         tflogin4.setText("Usuário.:");
 
         jButton1.setText("Selecionar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Voltar");
 
         jButton3.setText("Salvar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Pesquisar");
 
@@ -238,6 +248,32 @@ public class TelaFuncionario extends javax.swing.JFrame {
     limparCampos();
         
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+        TelaVincularUsuario tela = new TelaVincularUsuario(this);
+        tela.setVisible(true);
+
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if(!tfNome.getText().isEmpty() && 
+                !tfCPF.getText().isEmpty() && 
+                !tfSalario.getText().isEmpty() && 
+                !tfUsuario.getText().isEmpty() && 
+                !jcCargo.getSelectedItem().equals("Selecione")){
+            funcionario.setCargo(String.valueOf(jcCargo.getSelectedItem()));
+            funcionario.setCpf(tfCPF.getText());
+            funcionario.setNomeFuncionario(tfNome.getText());
+            funcionario.setSalario(Double.parseDouble(tfSalario.getText()));
+            
+            
+        }
+        
+    
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments

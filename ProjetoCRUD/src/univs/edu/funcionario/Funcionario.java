@@ -32,78 +32,75 @@ public class Funcionario{
 
    @OneToOne
    private Usuario usuario;
-   
-   //Martin Fo
-   
-   public int getIndFuncionario() {
-       return indFuncionario;
-   }
 
-   /**
-    * @param indFuncionario the indFuncionario to set
-    */
-   public void setIndFuncionario(int indFuncionario) {
-       this.indFuncionario = indFuncionario;
-   }
+    /**
+     * @return the indFuncionario
+     */
+    public int getIndFuncionario() {
+        return indFuncionario;
+    }
 
-   /**
-    * @return the nomne
-    */
-   public String getNome() {
-       return nomeFuncionario;
-   }
+    /**
+     * @param indFuncionario the indFuncionario to set
+     */
+    public void setIndFuncionario(int indFuncionario) {
+        this.indFuncionario = indFuncionario;
+    }
 
-   /**
-    * @param nomne the nomne to set
-    */
-   public void setNomeFuncionario(String nomne) {
-       this.nomeFuncionario = nomne;
-   }
+    /**
+     * @return the nomeFuncionario
+     */
+    public String getNomeFuncionario() {
+        return nomeFuncionario;
+    }
 
-   /**
-    * @return the cargo
-    */
-   public String getCargo() {
-       return cargo;
-   }
+    /**
+     * @param nomeFuncionario the nomeFuncionario to set
+     */
+    public void setNomeFuncionario(String nomeFuncionario) {
+        this.nomeFuncionario = nomeFuncionario;
+    }
 
-   /**
-    * @param cargo the cargo to set
-    */
-   public void setCargo(String cargo) {
-       this.cargo = cargo;
-   }
+    /**
+     * @return the cargo
+     */
+    public String getCargo() {
+        return cargo;
+    }
 
-   /**
-    * @return the cpf
-    */
-   public String getCpf() {
-       return cpf;
-   }
+    /**
+     * @param cargo the cargo to set
+     */
+    public void setCargo(String cargo) {
+        this.cargo = cargo;
+    }
 
-   /**
-    * @param cpf the cpf to set
-    */
-   public void setCpf(String cpf) {
-       this.cpf = cpf;
-   }
+    /**
+     * @return the cpf
+     */
+    public String getCpf() {
+        return cpf;
+    }
 
-   /**
-    * @return the salario
-    */
-   public double getSalario() {
-       return salario;
-   }
+    /**
+     * @param cpf the cpf to set
+     */
+    public void setCpf(String cpf) {
+        this.cpf = cpf;
+    }
 
-   /**
-    * @param salario the salario to set
-    */
-   public void setSalario(double salario) {
-       this.salario = salario;
-   }
+    /**
+     * @return the salario
+     */
+    public double getSalario() {
+        return salario;
+    }
 
-    int getIdFuncionario() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    /**
+     * @param salario the salario to set
+     */
+    public void setSalario(double salario) {
+        this.salario = salario;
     }
 
     /**
@@ -120,6 +117,7 @@ public class Funcionario{
         this.usuario = usuario;
     }
    
+
    
 }
 

@@ -29,9 +29,9 @@ public class FuncionarioTableModel extends AbstractTableModel {
         Funcionario funcionario = funcionarios.get(rowIndex);
         switch (columnIndex) {
             case 0:
-                return funcionario.getIdFuncionario();
+                return funcionario.getIndFuncionario();
             case 1:
-                return funcionario.getNome();
+                return funcionario.getNomeFuncionario();
             case 2:
                 return funcionario.getCargo();
             case 3:

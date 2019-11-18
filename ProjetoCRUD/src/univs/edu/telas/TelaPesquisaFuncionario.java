@@ -28,7 +28,7 @@ public class TelaPesquisaFuncionario extends javax.swing.JFrame {
     
     public void atualizarTabela(){
         FuncionarioTableModel tm = new FuncionarioTableModel(dao.ListarFuncionarios());
-        tabelaUsuario.setModel(tm);
+        tabelaFuncionario.setModel(tm);
         
     }
 
@@ -46,7 +46,7 @@ public class TelaPesquisaFuncionario extends javax.swing.JFrame {
         tfLogin = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tabelaUsuario = new javax.swing.JTable();
+        tabelaFuncionario = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -72,7 +72,7 @@ public class TelaPesquisaFuncionario extends javax.swing.JFrame {
             }
         });
 
-        tabelaUsuario.setModel(new javax.swing.table.DefaultTableModel(
+        tabelaFuncionario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -83,7 +83,7 @@ public class TelaPesquisaFuncionario extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(tabelaUsuario);
+        jScrollPane1.setViewportView(tabelaFuncionario);
 
         jButton2.setText("Excluir");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -100,6 +100,11 @@ public class TelaPesquisaFuncionario extends javax.swing.JFrame {
         });
 
         jButton4.setText("Voltar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -162,27 +167,27 @@ public class TelaPesquisaFuncionario extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        int linha = tabelaUsuario.getSelectedRow();
+        int linha = tabelaFuncionario.getSelectedRow();
         
         if(linha == -1){
             JOptionPane.showMessageDialog(null, "Selecione uma linha!");
-        }else if(JOptionPane.showConfirmDialog(null, "Deseja realmente excluir este usuário", "Excluir usuário", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
-            funcionario = dao.pesquisar((int) tabelaUsuario.getValueAt(linha, 0));
+        }else if(JOptionPane.showConfirmDialog(null, "Deseja realmente excluir este Funcionario", "Excluir Funcionario", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+            funcionario = dao.pesquisar((int) tabelaFuncionario.getValueAt(linha, 0));
             dao.excluir(funcionario);
             atualizarTabela();
-            JOptionPane.showMessageDialog(null, "Usuário excluido!");
+            JOptionPane.showMessageDialog(null, "Funcionario excluido!");
         }
 
        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    int linha = tabelaUsuario.getSelectedRow();
+    int linha = tabelaFuncionario.getSelectedRow();
         
         if(linha == -1){
             JOptionPane.showMessageDialog(null, "Selecione uma linha!");
         }else{
-             funcionario = dao.pesquisar((int) tabelaUsuario.getValueAt(linha, 0));
+             funcionario = dao.pesquisar((int) tabelaFuncionario.getValueAt(linha, 0));
              TelaFuncionario tela = new TelaFuncionario();
              tela.funcionario = funcionario;
              tela.preencherFuncionario();
@@ -192,6 +197,12 @@ public class TelaPesquisaFuncionario extends javax.swing.JFrame {
 
        
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        TelaFuncionario tela = new TelaFuncionario();
+        tela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -237,7 +248,7 @@ public class TelaPesquisaFuncionario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tabelaUsuario;
+    private javax.swing.JTable tabelaFuncionario;
     private javax.swing.JTextField tfLogin;
     // End of variables declaration//GEN-END:variables
 }

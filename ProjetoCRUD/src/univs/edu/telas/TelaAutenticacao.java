@@ -5,7 +5,11 @@
  */
 package univs.edu.telas;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JOptionPane;
+import univs.edu.funcionario.Funcionario;
+import univs.edu.funcionario.FuncionarioDAO;
 import univs.edu.usuario.Usuario;
 import univs.edu.usuario.UsuarioDAO;
 
@@ -15,13 +19,13 @@ import univs.edu.usuario.UsuarioDAO;
  */
 public class TelaAutenticacao extends javax.swing.JFrame {
 
-    Usuario usuario;
-    UsuarioDAO dao;
+    Funcionario funcionario;
+    FuncionarioDAO dao;
     
     public TelaAutenticacao() {
         initComponents();
-        usuario = new Usuario();
-        dao = new UsuarioDAO();
+        funcionario = new Funcionario();
+        dao = new FuncionarioDAO();
     }
 
     /**
@@ -59,6 +63,11 @@ public class TelaAutenticacao extends javax.swing.JFrame {
         tflogin.setText("Login:");
 
         jButton1.setText("Sair");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Entrar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -117,15 +126,29 @@ public class TelaAutenticacao extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    public Funcionario autenticarFunc(String login, String senha){
+        List<Funcionario> listaFuncionario = dao.ListarFuncionarios();
+        
+        for (Funcionario funcionario1 : listaFuncionario){
+            if(funcionario1.getUsuario().getLogin().equals(login) && funcionario1.getUsuario().getSenha().equals(senha)){
+                return funcionario1;
+            }
+        }
+        
+        
+        return null;
+    }
+    
+    
     private void tfLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfLoginActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfLoginActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         if(!tfLogin.getText().isEmpty() && !tfSenha.getText().isEmpty()){
-            usuario = dao.autenticarUsuario(tfLogin.getText(), tfSenha.getText());
-            if(usuario != null){
-                MenuPrincipal menu = new MenuPrincipal();
+            funcionario = autenticarFunc(tfLogin.getText(), tfSenha.getText());
+            if(funcionario != null){
+                MenuPrincipal menu = new MenuPrincipal(funcionario);
                 menu.setVisible(true);
                 dispose();
             }else{
@@ -136,6 +159,10 @@ public class TelaAutenticacao extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

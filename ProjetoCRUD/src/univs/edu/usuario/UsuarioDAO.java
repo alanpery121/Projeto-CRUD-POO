@@ -66,4 +66,16 @@ public class UsuarioDAO {
         return usuarios;
     }
     
+    public List<Usuario> pesquisar(String campo, String valor){
+        sessao = HibernateUtil.
+                getSessionFactory().openSession();
+        transacao = sessao.beginTransaction();
+        List<Usuario> usuarios = sessao.
+                createCriteria(Usuario.class).
+                add(Restrictions.
+                        ilike(campo, "%"+valor+"%")).list();
+        sessao.close();
+        return usuarios;
+    }
+    
 }
